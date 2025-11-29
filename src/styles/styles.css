@@ -1,4 +1,5 @@
-@import 'opui-css/dist/op+ui.css';
+@import 'opui-css/dist/op.css';
+@import 'opui-css/dist/theme-two.css';
 @import './animations.css';
 @import './theme.css';
 
