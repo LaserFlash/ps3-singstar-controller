@@ -17,7 +17,13 @@ npm install
 npm run start
 ```
 
-# Building For Production
+To run the app against your local PS3 with webman install create `.env.development.local` and set the local IP of your PS3 e.g.
+
+```
+VITE_WEBMAN = 'http://192.168.68.74'
+```
+
+## Building For Production
 
 To build this application for production:
 

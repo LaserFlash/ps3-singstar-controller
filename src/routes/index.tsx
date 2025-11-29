@@ -1,9 +1,3 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, redirect } from '@tanstack/react-router';
 
-export const Route = createFileRoute('/')({
-  component: App,
-});
-
-function App() {
-  return <div className="center card outlined p-4 radius-3"></div>;
-}
+export const Route = createFileRoute('/')({ loader: () => redirect({ to: '/games' }) });

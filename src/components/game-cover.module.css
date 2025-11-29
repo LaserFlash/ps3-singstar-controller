@@ -1,0 +1,22 @@
+.game-cover {
+  background-color: var(--surface-elevated);
+  border-radius: var(--radius-2);
+  text-align: center;
+  overflow: hidden;
+
+  strong {
+    padding: var(--size-1);
+  }
+
+  .PS2 img {
+    aspect-ratio: 120 / 172.5;
+    background-image: url('@/assets/artwork-unavailable-ps2.webp');
+    background-size: contain;
+  }
+
+  .PS3 img {
+    aspect-ratio: 260 / 300;
+    background-image: url('@/assets/artwork-unavailable-ps3.webp');
+    background-size: contain;
+  }
+}

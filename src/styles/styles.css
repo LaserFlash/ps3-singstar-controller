@@ -1,2 +1,8 @@
 @import 'opui-css/dist/op+ui.css';
+@import './animations.css';
 @import './theme.css';
+
+body {
+  overflow: auto;
+  padding-bottom: 5rem;
+}

@@ -1,0 +1,19 @@
+.grid {
+  display: flex;
+  gap: var(--size-2);
+  margin: var(--size-2);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.game {
+  width: var(--size-fluid-7);
+
+  /* unset link styles */
+  color: unset;
+  text-decoration: unset;
+
+  /* reduce font size */
+
+  font-size: var(--font-size-fluid-0);
+}

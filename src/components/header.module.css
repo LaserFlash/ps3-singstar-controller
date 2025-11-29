@@ -1,0 +1,38 @@
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  z-index: var(--layer-top);
+  width: 100%;
+  background-color: var(--surface-elevated);
+  display: flex;
+  justify-content: space-around;
+  padding: var(--size-2);
+  font-size: var(--font-size-0);
+  box-shadow: var(--shadow-1);
+
+  .nav-button {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: unset;
+    text-decoration: none;
+    transition: color 0.5s var(--ease-1);
+
+    svg {
+      width: 100%;
+      height: 2rem;
+      padding: var(--size-1);
+      border-radius: var(--radius-3);
+      transition: background-color 0.5s var(--ease-1);
+    }
+
+    &:global(.active) {
+      color: var(--color-8);
+
+      svg {
+        color: var(--text-color-1);
+        background-color: var(--color-8);
+      }
+    }
+  }
+}

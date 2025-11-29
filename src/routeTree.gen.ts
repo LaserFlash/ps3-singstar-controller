@@ -9,48 +9,96 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SongsRouteImport } from './routes/songs'
+import { Route as GamesRouteImport } from './routes/games'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as DemoTableRouteImport } from './routes/demo.table'
+import { Route as SongsGameIDRouteImport } from './routes/songs.$gameID'
+import { Route as GamesGameIDRouteImport } from './routes/games.$gameID'
 
+const SongsRoute = SongsRouteImport.update({
+  id: '/songs',
+  path: '/songs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamesRoute = GamesRouteImport.update({
+  id: '/games',
+  path: '/games',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DemoTableRoute = DemoTableRouteImport.update({
-  id: '/demo/table',
-  path: '/demo/table',
-  getParentRoute: () => rootRouteImport,
+const SongsGameIDRoute = SongsGameIDRouteImport.update({
+  id: '/$gameID',
+  path: '/$gameID',
+  getParentRoute: () => SongsRoute,
+} as any)
+const GamesGameIDRoute = GamesGameIDRouteImport.update({
+  id: '/$gameID',
+  path: '/$gameID',
+  getParentRoute: () => GamesRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/demo/table': typeof DemoTableRoute
+  '/games': typeof GamesRouteWithChildren
+  '/songs': typeof SongsRouteWithChildren
+  '/games/$gameID': typeof GamesGameIDRoute
+  '/songs/$gameID': typeof SongsGameIDRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/demo/table': typeof DemoTableRoute
+  '/games': typeof GamesRouteWithChildren
+  '/songs': typeof SongsRouteWithChildren
+  '/games/$gameID': typeof GamesGameIDRoute
+  '/songs/$gameID': typeof SongsGameIDRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/demo/table': typeof DemoTableRoute
+  '/games': typeof GamesRouteWithChildren
+  '/songs': typeof SongsRouteWithChildren
+  '/games/$gameID': typeof GamesGameIDRoute
+  '/songs/$gameID': typeof SongsGameIDRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/demo/table'
+  fullPaths: '/' | '/games' | '/songs' | '/games/$gameID' | '/songs/$gameID'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/demo/table'
-  id: '__root__' | '/' | '/demo/table'
+  to: '/' | '/games' | '/songs' | '/games/$gameID' | '/songs/$gameID'
+  id:
+    | '__root__'
+    | '/'
+    | '/games'
+    | '/songs'
+    | '/games/$gameID'
+    | '/songs/$gameID'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DemoTableRoute: typeof DemoTableRoute
+  GamesRoute: typeof GamesRouteWithChildren
+  SongsRoute: typeof SongsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/songs': {
+      id: '/songs'
+      path: '/songs'
+      fullPath: '/songs'
+      preLoaderRoute: typeof SongsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games': {
+      id: '/games'
+      path: '/games'
+      fullPath: '/games'
+      preLoaderRoute: typeof GamesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -58,19 +106,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demo/table': {
-      id: '/demo/table'
-      path: '/demo/table'
-      fullPath: '/demo/table'
-      preLoaderRoute: typeof DemoTableRouteImport
-      parentRoute: typeof rootRouteImport
+    '/songs/$gameID': {
+      id: '/songs/$gameID'
+      path: '/$gameID'
+      fullPath: '/songs/$gameID'
+      preLoaderRoute: typeof SongsGameIDRouteImport
+      parentRoute: typeof SongsRoute
+    }
+    '/games/$gameID': {
+      id: '/games/$gameID'
+      path: '/$gameID'
+      fullPath: '/games/$gameID'
+      preLoaderRoute: typeof GamesGameIDRouteImport
+      parentRoute: typeof GamesRoute
     }
   }
 }
 
+interface GamesRouteChildren {
+  GamesGameIDRoute: typeof GamesGameIDRoute
+}
+
+const GamesRouteChildren: GamesRouteChildren = {
+  GamesGameIDRoute: GamesGameIDRoute,
+}
+
+const GamesRouteWithChildren = GamesRoute._addFileChildren(GamesRouteChildren)
+
+interface SongsRouteChildren {
+  SongsGameIDRoute: typeof SongsGameIDRoute
+}
+
+const SongsRouteChildren: SongsRouteChildren = {
+  SongsGameIDRoute: SongsGameIDRoute,
+}
+
+const SongsRouteWithChildren = SongsRoute._addFileChildren(SongsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DemoTableRoute: DemoTableRoute,
+  GamesRoute: GamesRouteWithChildren,
+  SongsRoute: SongsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

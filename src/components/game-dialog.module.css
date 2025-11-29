@@ -1,0 +1,12 @@
+.game-cover {
+  width: 4rem;
+}
+
+.game-type {
+  text-transform: uppercase;
+}
+
+.button-link {
+  text-decoration: unset;
+  color: unset;
+}

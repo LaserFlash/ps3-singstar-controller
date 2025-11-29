@@ -1,0 +1,40 @@
+.song-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-1);
+  margin: var(--size-2);
+  font-size: var(--font-size-1);
+  line-height: var(--font-size-2);
+}
+
+.song-card {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: var(--size-1) var(--size-2);
+  text-decoration: unset;
+  color: unset;
+  cursor: pointer;
+}
+
+.song-info {
+  display: flex;
+  align-items: start;
+  flex-direction: row;
+  gap: var(--size-2);
+  font-size: 1em;
+
+  .game-cover {
+    min-width: 2em;
+    width: 2em;
+  }
+}
+
+.game-info {
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+  gap: var(--size-1);
+  font-size: 0.75em;
+  text-align: right;
+}

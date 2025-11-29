@@ -1,14 +1,20 @@
 import { Link } from '@tanstack/react-router';
+import { PiGameControllerBold } from 'react-icons/pi';
+import { TbMusic } from 'react-icons/tb';
+import clsx from 'clsx';
+import classes from '@/components/header.module.css';
 
 export default function Header() {
   return (
-    <header className="p-2 flex gap-2 bg-white text-black justify-between">
-      <nav className="tabs filled">
-        <Link className="tab button" to="/">
-          Home
+    <header>
+      <nav className={clsx(classes['nav-bar'], 'tabs filled')}>
+        <Link className={clsx(classes['nav-button'], 'tab')} resetScroll={true} to="/games">
+          <PiGameControllerBold />
+          Avaliable Games
         </Link>
-        <Link className="tab button" to="/demo/table">
-          TanStack Table
+        <Link className={clsx(classes['nav-button'], 'tab')} resetScroll={true} to="/songs">
+          <TbMusic size={'4rem'} />
+          Avaliable Songs
         </Link>
       </nav>
     </header>

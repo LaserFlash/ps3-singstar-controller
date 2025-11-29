@@ -1,0 +1,21 @@
+.search-form {
+  display: flex;
+  gap: var(--size-2);
+  margin: var(--size-2);
+  flex-direction: column;
+  border-bottom: var(--color-6) var(--border-size-1) solid;
+  padding-bottom: var(--size-2);
+
+  .search-form-fields {
+    display: flex;
+    gap: var(--size-2);
+
+    > label {
+      flex: 1;
+    }
+  }
+
+  .search-form-actions {
+    justify-content: end;
+  }
+}
