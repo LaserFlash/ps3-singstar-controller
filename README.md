@@ -17,11 +17,11 @@
 </div>
 
 # Features
+
 - Search by game or song title or artist
 - Insert your PS3 or PS2 singstar games without getting up
 - Runs directly on your PS3 using [webMAN-MOD](https://github.com/aldostools/webMAN-MOD) webserver
 - Mobile first UI
-
 
 ## Setup
 
@@ -42,11 +42,13 @@ You should now be able to access the tool from `http://PS3_LOCAL_IP/singstar.htm
 Upate `games.json` to display the Singstar games you have setup on your PS3.
 
 ```ts
-    id: string, // game id, used to lookup cover art e.g. "SCES_554.53"
-    name: string,
-    type: "PS2" | "PS3",
-    path: string, // location of the iso / gamedump (PS2 discs need to be relative to dev_hdd0/Singstar)
-    songs: { artist: string, name: string }[]
+type Game = {
+  id: string; // game id, used to lookup cover art e.g. "SCES_554.53"
+  name: string;
+  type: 'PS2' | 'PS3';
+  path: string; // location of the iso / gamedump (PS2 discs need to be relative to dev_hdd0/Singstar)
+  songs: { artist: string; name: string }[];
+};
 ```
 
 ## Development
