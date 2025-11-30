@@ -1,14 +1,13 @@
 import { Outlet, createFileRoute } from '@tanstack/react-router';
-import Fuse from 'fuse.js';
-import { TbMusicSearch } from 'react-icons/tb';
-import { useForm } from 'react-hook-form';
-import { useEffect } from 'react';
 import clsx from 'clsx';
-import type { SubmitHandler } from 'react-hook-form';
-import SongList from '@/components/song-list';
-import LoaderPage from '@/components/loader.page';
-import classes from '@/routes/songs.module.css';
+import Fuse from 'fuse.js';
+import { useEffect } from 'react';
+import { type SubmitHandler, useForm } from 'react-hook-form';
+import { TbMusicSearch } from 'react-icons/tb';
 import API from '@/api';
+import LoaderPage from '@/components/loader.page';
+import SongList from '@/components/song-list';
+import classes from '@/routes/songs.module.css';
 
 type SongSearch = {
   gameID?: string;

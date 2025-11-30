@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
-import type { Game } from '@/api';
-import GameCover from '@/components/game-cover';
 import classes from '@//components/game-list.module.css';
+import { type Game } from '@/api';
+import GameCover from '@/components/game-cover';
 
 type Props = {
   games: Game[];

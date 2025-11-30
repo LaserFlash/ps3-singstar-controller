@@ -1,14 +1,13 @@
+import { Link } from '@tanstack/react-router';
 import clsx from 'clsx';
 import { useCallback, useLayoutEffect, useRef } from 'react';
 import { CgClose } from 'react-icons/cg';
-import { Link } from '@tanstack/react-router';
 import { GoIssueTrackedBy, GoIssueTracks } from 'react-icons/go';
 import { TiEjectOutline } from 'react-icons/ti';
-import type { Game } from '@/api';
+import API, { type Game } from '@/api';
 import GameCover from '@/components/game-cover';
 import classes from '@/components/game-dialog.module.css';
 import sheet from '@/styles/modules/sheet.module.css';
-import API from '@/api';
 
 type Props = {
   game: Game | undefined;

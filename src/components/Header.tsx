@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
+import clsx from 'clsx';
 import { PiGameControllerBold } from 'react-icons/pi';
 import { TbMusic } from 'react-icons/tb';
-import clsx from 'clsx';
 import classes from '@/components/header.module.css';
 
 export default function Header() {

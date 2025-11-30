@@ -1,8 +1,8 @@
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { defineConfig } from 'vite';
-import viteReact from '@vitejs/plugin-react';
 import { tanstackRouter } from '@tanstack/router-plugin/vite';
+import viteReact from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 import { viteSingleFile } from 'vite-plugin-singlefile';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));

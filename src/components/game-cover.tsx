@@ -1,11 +1,9 @@
 import clsx from 'clsx';
-import { createContext, useContext, useState } from 'react';
-import type { PropsWithChildren } from 'react';
-import type { Game } from '@/api';
-import API from '@/api';
-import classes from '@/components/game-cover.module.css';
+import { type PropsWithChildren, createContext, useContext, useState } from 'react';
+import API, { type Game } from '@/api';
 import PS2coverFailed from '@/assets/artwork-unavailable-ps2.webp';
 import PS3coverFailed from '@/assets/artwork-unavailable-ps3.webp';
+import classes from '@/components/game-cover.module.css';
 
 const GameContext = createContext<Game>({} as Game);
 

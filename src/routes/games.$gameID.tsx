@@ -1,8 +1,8 @@
 import { createFileRoute, useCanGoBack, useNavigate, useRouter } from '@tanstack/react-router';
 import { useCallback } from 'react';
 import API from '@/api';
-import LoaderPage from '@/components/loader.page';
 import GameDialog from '@/components/game-dialog';
+import LoaderPage from '@/components/loader.page';
 
 export const Route = createFileRoute('/games/$gameID')({
   loader: async ({ params }) =>

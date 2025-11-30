@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import { Link, useSearch } from '@tanstack/react-router';
-import type { Game } from '@/api';
+import clsx from 'clsx';
+import { type Game } from '@/api';
 import GameCover from '@/components/game-cover';
 import classes from '@/components/song-list.module.css';
 
