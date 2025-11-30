@@ -12,7 +12,7 @@ export default defineConfig({
   base: './',
   plugins: [
     tanstackRouter({ autoCodeSplitting: true }),
-    viteReact(),
+    viteReact({ babel: { plugins: ['babel-plugin-react-compiler'] } }),
     viteSingleFile(),
     {
       name: 'rename',

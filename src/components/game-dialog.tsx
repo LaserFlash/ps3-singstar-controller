@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import clsx from 'clsx';
-import { useCallback, useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import { CgClose } from 'react-icons/cg';
 import { GoIssueTrackedBy, GoIssueTracks } from 'react-icons/go';
 import { TiEjectOutline } from 'react-icons/ti';
@@ -17,14 +17,14 @@ type Props = {
 export default function GameDialog({ game, onClose }: Props) {
   const dialog = useRef<HTMLDialogElement>(null);
 
-  const closeDialog = useCallback((event?: React.MouseEvent<HTMLDialogElement>) => {
+  const closeDialog = (event?: React.MouseEvent<HTMLDialogElement>) => {
     if (!event || event.target === dialog.current) {
       dialog.current?.close();
       onClose();
     }
-  }, []);
+  };
 
-  useLayoutEffect(() => dialog.current?.showModal(), []);
+  useLayoutEffect(() => dialog.current?.showModal());
 
   if (!game) {
     return (

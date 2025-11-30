@@ -1,5 +1,4 @@
 import { createFileRoute, useCanGoBack, useNavigate, useRouter } from '@tanstack/react-router';
-import { useCallback } from 'react';
 import API from '@/api';
 import GameDialog from '@/components/game-dialog';
 import LoaderPage from '@/components/loader.page';
@@ -18,10 +17,10 @@ function GamePopup() {
   const canGoBack = useCanGoBack();
   const navigate = useNavigate();
 
-  const onClose = useCallback(() => {
+  const onClose = () => {
     if (canGoBack) router.history.back();
     else navigate({ to: '/games' });
-  }, []);
+  };
 
   return <GameDialog game={game} onClose={onClose} />;
 }

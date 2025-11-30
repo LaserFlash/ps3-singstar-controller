@@ -18,7 +18,7 @@ export const Route = createFileRoute('/songs')({
   component: RouteComponent,
   pendingComponent: LoaderPage,
   validateSearch: (search): SongSearch => search,
-  loaderDeps: ({ search: { gameID, text } }) => ({ gameID, text }),
+  loaderDeps: ({ search: { gameID, text } }) => ({ gameID: gameID ?? '', text: text ?? '' }),
   loader: async ({ deps }) => {
     const allGames = await API.getGames();
     const relevantGames = allGames.filter((game) => !deps.gameID || game.id === deps.gameID);
@@ -50,7 +50,6 @@ function RouteComponent() {
   const { games, songs } = Route.useLoaderData();
 
   const {
-    reset,
     register,
     handleSubmit,
     formState: { isSubmitting },
@@ -62,18 +61,15 @@ function RouteComponent() {
   };
 
   const onSubmitClear: SubmitHandler<SongSearch> = () => {
-    reset({ gameID: '', text: '' });
-    navigate({ search: {} });
+    onSubmitSearch({ gameID: '', text: '' });
   };
 
-  useEffect(
-    () =>
-      subscribe({
-        name: 'gameID',
-        formState: { values: true },
-        callback: () => handleSubmit(onSubmitSearch)(),
-      }),
-    [handleSubmit, subscribe, onSubmitSearch]
+  useEffect(() =>
+    subscribe({
+      name: 'gameID',
+      formState: { values: true },
+      callback: () => handleSubmit(onSubmitSearch)(),
+    })
   );
 
   return (
